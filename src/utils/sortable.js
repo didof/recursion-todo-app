@@ -23,7 +23,7 @@ const nestedConfig = (data) => ({
 	onSort: (e) => updateState(e, data),
 })
 
-export const buildSortable = (el, config = defaultConfig, data) => {
+export const buildSortable = (el, config, data) => {
 	switch (config) {
 		case 'nested':
 			config = nestedConfig(data)
@@ -36,8 +36,7 @@ export const buildSortable = (el, config = defaultConfig, data) => {
 
 const updateState = (e, data) => {
    let updatedData
-	// console.log(data)
-	// consoleUtils(e)
+	consoleUtils(e)
 
 	if (wasDroppedInSameList(e)) {
 		updatedData = getUpdatedData(e, data)
@@ -51,6 +50,9 @@ function wasDroppedInSameList({ from, to }) {
 }
 
 function getUpdatedData({oldIndex, newIndex}, data) {
+   // use id to find the depth layer of the list
+
+
 	let elDragged = data.splice(oldIndex, 1)
    data.splice(newIndex, 0, ...elDragged)
    return data

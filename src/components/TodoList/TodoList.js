@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, use } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { TodoContext } from '../../context/TodoContext'
 import { buildSortable } from '../../utils/sortable'
 
@@ -6,21 +6,20 @@ import TodoElement from '../TodoElement/TodoElement'
 import Button from '../UI/Button'
 
 function TodoListContainer() {
+	const {
+		state: { data },
+		dispatch,
+	} = useContext(TodoContext)
+
 	useEffect(() => {
-		const dataSaved = localStorage.getItem('data-sorted')
+		let dataSaved = localStorage.getItem('data-sorted')
 		if (dataSaved) {
 			dispatch({ type: 'use_updated_data', payload: dataSaved })
 		}
 
 		const el = document.getElementById('container-nested')
 		buildSortable(el, 'nested', data)
-	}, [])
-
-	// must stay after componentDidMount or it will flash with default data
-	const {
-		state: { data },
-		dispatch,
-	} = useContext(TodoContext)
+	}, [data, dispatch])
 
 	const handle_save = () => {
 		// check if in sessionStorage there is the key 'data-sorted'

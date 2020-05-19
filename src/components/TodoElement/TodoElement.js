@@ -15,7 +15,7 @@ export default function TodoElement({
 	depth = 0,
 	deleted,
 }) {
-	const { dispatch } = useContext(TodoContext)
+	const { state: {data}, dispatch } = useContext(TodoContext)
 
 	const [show, toggle] = useToggle()
 
@@ -27,9 +27,9 @@ export default function TodoElement({
 	useEffect(() => {
 		const listNested = document.querySelectorAll('.list-nested')
 		for (let i = 0; i < listNested.length; i++) {
-			buildSortable(listNested[i], 'nested')
+			buildSortable(listNested[i], 'nested', data)
 		}
-	}, [])
+	}, [data])
 
 	if (deleted) return null
 
