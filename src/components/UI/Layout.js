@@ -6,8 +6,8 @@ import Title from '../Title/Title'
 function Layout({ children }) {
 	return (
 		<>
-			<Modal />
 			<Title />
+			<Modal />
 			<div className='container'>
 				<main>{children}</main>
 			</div>

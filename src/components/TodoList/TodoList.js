@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
-
+import React, { useEffect, useContext } from 'react'
 import { TodoContext } from '../../context/TodoContext'
+import { buildSortable } from '../../utils/sortable'
+
 
 import TodoElement from '../TodoElement/TodoElement'
 
@@ -8,6 +9,11 @@ function TodoListContainer() {
 	const {
 		state: { data },
 	} = useContext(TodoContext)
+
+	useEffect(() => {
+		const listNested = document.getElementById('nested')
+		buildSortable(listNested, 'nested')
+	}, [])
 
 	return (
 		<nav className='panel'>
@@ -26,7 +32,7 @@ function TodoListContainer() {
 				<span>Private</span>
 			</p>
 			<div className='menu'>
-				<ul className='menu-list'>
+				<ul className='menu-list' id="nested">
 					{data.map((todo) => {
 						return <TodoElement {...todo} key={todo.id} />
 					})}

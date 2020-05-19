@@ -60,7 +60,15 @@ const initialState = {
 							title: 'nephew',
 							content: 'nipote',
 							deleted: false,
-							childs: [],
+							childs: [
+								{
+									id: uuid(),
+									title: 'nephewer',
+									content: 'nipote',
+									deleted: false,
+									childs: [],
+								},
+							],
 						},
 					],
 				},
