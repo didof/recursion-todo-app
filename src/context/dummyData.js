@@ -9,20 +9,27 @@ export default {
 	data: [
 		{
 			id: uuid(),
-			title: 'mother',
-			content: 'madre',
+			title: 'Room 1',
+			content: '',
 			deleted: false,
 			childs: [
 				{
 					id: uuid(),
-					title: 'firstborn',
-					content: 'primogenito',
+					title: 'Room 1.1',
+					content: '',
 					deleted: false,
 					childs: [
 						{
 							id: uuid(),
-							title: 'nephew',
-							content: 'nipote',
+							title: 'Room 1.1.1',
+							content: '',
+							deleted: false,
+							childs: [],
+						},
+						{
+							id: uuid(),
+							title: 'Room 1.1.2',
+							content: '',
 							deleted: false,
 							childs: [],
 						},
@@ -30,42 +37,42 @@ export default {
 				},
 				{
 					id: uuid(),
-					title: 'second son',
-					content: 'secondogenito',
+					title: 'Room 1.2',
+					content: '',
 					deleted: false,
 					childs: [
-						{
-							id: uuid(),
-							title: 'nephew',
-							content: 'nipote',
-							deleted: false,
-							childs: [],
-						},
-						{
-							id: uuid(),
-							title: 'nephew',
-							content: 'nipote',
-							deleted: false,
-							childs: [
-								{
-									id: uuid(),
-									title: 'nephewer',
-									content: 'nipote',
-									deleted: false,
-									childs: [],
-								},
-							],
-						},
+						// {
+						// 	id: uuid(),
+						// 	title: 'Room 1.2.1',
+						// 	content: '',
+						// 	deleted: false,
+						// 	childs: [],
+						// },
 					],
 				},
 			],
 		},
 		{
 			id: uuid(),
-			title: 'bachelor',
-			content: 'scapolo',
+			title: 'Room 2',
+			content: '',
 			deleted: false,
-			childs: [],
+			childs: [
+				{
+					id: uuid(),
+					title: 'Room 2.1',
+					content: '',
+					deleted: false,
+					childs: [],
+				},
+				{
+					id: uuid(),
+					title: 'Room 2.2',
+					content: '',
+					deleted: false,
+					childs: [],
+				},
+			],
 		},
 	],
 }
