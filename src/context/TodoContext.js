@@ -76,51 +76,6 @@ const initialState = {
 		},
 		{
 			id: uuid(),
-			title: 'mother',
-			content: 'madre',
-			deleted: false,
-			childs: [
-				{
-					id: uuid(),
-					title: 'firstborn',
-					content: 'primogenito',
-					deleted: false,
-					childs: [
-						{
-							id: uuid(),
-							title: 'nephew',
-							content: 'nipote',
-							deleted: false,
-							childs: [],
-						},
-					],
-				},
-				{
-					id: uuid(),
-					title: 'second son',
-					content: 'secondogenito',
-					deleted: false,
-					childs: [
-						{
-							id: uuid(),
-							title: 'nephew',
-							content: 'nipote',
-							deleted: false,
-							childs: [],
-						},
-						{
-							id: uuid(),
-							title: 'nephew',
-							content: 'nipote',
-							deleted: false,
-							childs: [],
-						},
-					],
-				},
-			],
-		},
-		{
-			id: uuid(),
 			title: 'bachelor',
 			content: 'scapolo',
 			deleted: false,
@@ -183,6 +138,8 @@ const todoReducer = (state, action) => {
 			copy.templates[action.payload].disabled = true
 
 			return copy
+		case 'use_updated_data':
+			return { ...state, data: JSON.parse(action.payload) }
 		default:
 			return state
 	}

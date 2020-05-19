@@ -4,3 +4,12 @@ html, body {
   box-sizing: border-box;
   height: 100vh;
 }
+
+.matt {
+  background-color: white;
+}
+
+.ghost {
+  filter: brightness(120%);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}

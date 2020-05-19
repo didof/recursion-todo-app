@@ -36,7 +36,7 @@ export default function TodoElement({
 	return (
 		<li
 			id={id}
-			className='list-item'
+			className='list-item matt'
 			onClick={toggle}
 			// style={{ paddingLeft: depth * 20 }}
 			style={{ cursor: 'pointer' }}
@@ -54,7 +54,7 @@ export default function TodoElement({
 			</div>
 			<span className='is-size-6 has-text-dark'>{content}</span>
 			{show && childs.length > 0 && (
-				<ul className='list-nested'>
+				<ul className='list-nested' id={`${id}-nested`}>
 					{childs.map((child) => (
 						<TodoElement key={child.id} {...child} depth={depth + 1} />
 					))}
