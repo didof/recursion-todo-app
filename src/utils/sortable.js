@@ -21,7 +21,8 @@ const nestedConfig = (data) => ({
 	fallbackOnBody: true,
 	swapThreshold: 0.3,
 	ghostClass: 'ghost',
-
+	handle: '.fa-arrows-alt',
+	
 	onSort: (e) => updateState(e, data),
 })
 
@@ -38,10 +39,12 @@ export const buildSortable = (el, config, data) => {
 
 const updateState = (e, data) => {
 	let updatedData
-	consoleUtils(e)
 
 	if (wasDroppedInSameList(e)) {
 		updatedData = getUpdatedData(e, data)
+	} else {
+		consoleUtils(e)
+		console.log('in una altra lista')
 	}
 
 	saveinSessionStorage(updatedData)

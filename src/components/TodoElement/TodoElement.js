@@ -3,7 +3,7 @@ import { TodoContext } from '../../context/TodoContext'
 import { buildSortable } from '../../utils/sortable'
 
 // import Checkbox from '../Checkbox/Checkbox'
-// import Button from '../UI/Button'
+import Button from '../UI/Button'
 
 import useToggle from '../../hooks/useToggle'
 
@@ -15,7 +15,10 @@ export default function TodoElement({
 	depth = 0,
 	deleted,
 }) {
-	const { state: {data}, dispatch } = useContext(TodoContext)
+	const {
+		state: { data },
+		dispatch,
+	} = useContext(TodoContext)
 
 	const [show, toggle] = useToggle()
 
@@ -37,19 +40,26 @@ export default function TodoElement({
 		<li
 			id={id}
 			className='list-item matt'
-			onClick={toggle}
 			// style={{ paddingLeft: depth * 20 }}
-			style={{ cursor: 'pointer' }}
 		>
 			<div className='level'>
 				<div className='level-left'>
+					<abbr title='sort list'>
+						<i className='fas fa-arrows-alt' style={{ cursor: 'grab' }}></i>
+					</abbr>
 					<p className='title is-size-5 is-italic'>{title}</p>
 				</div>
-				<div className='level-right buttons'>
-					<span
-						className='delete is-large'
-						onClick={(e) => handle_remove(e, id)}
-					></span>
+				<div className='level-right buttons has-addons'>
+					<Button
+						click={(e) => handle_remove(e, id)}
+						styles={['icon', 'warning', 'outlined']}
+						abbr='delete item'
+					>
+						<i className='fas fa-minus'></i>
+					</Button>
+					<Button click={toggle} styles={['icon']} abbr='open item'>
+						<i className='fas fa-chevron-down'></i>
+					</Button>
 				</div>
 			</div>
 			<span className='is-size-6 has-text-dark'>{content}</span>
