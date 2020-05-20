@@ -11,5 +11,5 @@ html, body {
 
 .ghost {
   filter: brightness(120%);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
 }

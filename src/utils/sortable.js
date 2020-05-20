@@ -11,15 +11,15 @@ function consoleUtils(e) {
 }
 
 const defaultConfig = {
-	animation: 500,
+	animation: 200,
 	ghostClass: 'ghost',
 }
 
 const nestedConfig = (data) => ({
 	group: 'nested',
-	animation: 500,
+	animation: 300,
 	fallbackOnBody: true,
-	swapThreshold: 0.3,
+	swapThreshold: 0.9,
 	ghostClass: 'ghost',
 	handle: '.fa-arrows-alt',
 	

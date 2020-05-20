@@ -16,10 +16,12 @@ function TodoListContainer() {
 		if (dataSaved) {
 			dispatch({ type: 'use_updated_data', payload: dataSaved })
 		}
+	}, [dispatch])
 
-		const el = document.getElementById('container-nested')
-		buildSortable(el, 'nested', data)
-	}, [])
+	const el = document.getElementById('container-nested')
+	useEffect(() => {
+		el && buildSortable(el, 'nested', data)
+	}, [el, data])
 
 	const handle_save = () => {
 		// check if in sessionStorage there is the key 'data-sorted'
@@ -38,20 +40,19 @@ function TodoListContainer() {
 			<div className='panel-block'>
 				<p className='control has-icons-left'>
 					<input className='input' type='text' placeholder='Search' disabled />
-					<Button className='button' styles={['primary']} click={handle_save}>
-						Save
-					</Button>
 
 					<span className='icon is-left'>
 						<i className='fas fa-search' aria-hidden='true'></i>
 					</span>
 				</p>
 			</div>
-			<p className='panel-tabs'>
-				<span className='is-active'>All</span>
-				<span>Public</span>
-				<span>Private</span>
-			</p>
+			<div className='panel-tabs'>
+				<div className='buttons'>
+					<Button className='button' styles={['primary']} click={handle_save}>
+						Save
+					</Button>
+				</div>
+			</div>
 			<div className='menu'>
 				<ul className='menu-list' id='container-nested'>
 					{data.map((todo) => {
