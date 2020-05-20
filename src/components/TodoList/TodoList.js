@@ -19,7 +19,7 @@ function TodoListContainer() {
 
 		const el = document.getElementById('container-nested')
 		buildSortable(el, 'nested', data)
-	}, [data, dispatch])
+	}, [])
 
 	const handle_save = () => {
 		// check if in sessionStorage there is the key 'data-sorted'

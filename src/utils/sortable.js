@@ -38,7 +38,7 @@ export const buildSortable = (el, config, data) => {
 
 const updateState = (e, data) => {
 	let updatedData
-	// consoleUtils(e)
+	consoleUtils(e)
 
 	if (wasDroppedInSameList(e)) {
 		updatedData = getUpdatedData(e, data)
@@ -61,28 +61,4 @@ function getUpdatedData({ oldIndex, newIndex, item }, data) {
 
 function saveinSessionStorage(updatedData) {
 	sessionStorage.setItem('data-sorted', JSON.stringify(updatedData))
-}
-
-function radarPaths(arr) {
-	const paths = []
-	let path = []
-
-	function sendRadarDeep(layer, path) {
-		layer.forEach((room, index) => {
-			path.push(index)
-
-			console.log(`visit ${room.title} - path ${path.toString()}`)
-
-			if (room.childs.length > 0) {
-				sendRadarDeep(room.childs, path)
-			} else {
-				paths.push(path)
-				path = []
-				console.log(`reached bottom - paths ${paths.toString()}`)
-			}
-		})
-	}
-
-	sendRadarDeep(arr, path)
-	console.log(paths)
 }
